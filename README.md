@@ -1,59 +1,153 @@
-Red Bus Seat Count Prediction Analysis
-Project Overview
-This is a machine learning project focused on predicting bus seat occupancy for RedBus, a popular online bus booking platform. The goal is to forecast the final seat count for specific bus routes on given dates.
-Dataset Structure
-The analysis works with three main datasets:
+🚌 RedBus Seat Count Prediction Analysis
+📌 Project Overview
+This repository contains a machine learning solution for predicting bus seat occupancy for RedBus, a leading online bus ticketing platform. The objective is to forecast the final seat count for specific bus routes on given dates, aiding in smarter operational decisions.
 
-Train Dataset (67,200 records)
+📂 Dataset Overview
+The analysis utilizes three key datasets:
 
-Contains route information with date of journey (doj), source ID (srcid), and destination ID (destid)
-Includes target variable: final seat count for each route
+🔹 1. Train Dataset (train.csv)
+Records: 67,200
 
+Contains route and date information (doj, srcid, destid)
 
-Test Dataset (5,900 records)
+Target variable: final seat count
 
-Similar structure to training data but without the target variable
-Used for generating predictions for submission
+🔹 2. Test Dataset (test.csv)
+Records: 5,900
 
+Similar to train data, but without the target variable
 
-Transactions Dataset (2,266,100 records)
+Used for model inference and generating predictions
 
-Detailed transaction-level data with bus information
-Contains features like bus type, fare, seat capacity, ratings, and actual seat bookings
+🔹 3. Transactions Dataset (transactions.csv)
+Records: 2,266,100
 
+Granular transaction-level data
 
+Includes features like bus_type, fare, seat_capacity, ratings, booked seats
 
-Key Features & Methodology
-Feature Engineering:
+🛠️ Feature Engineering
+Key features derived for improved predictive performance:
 
-Time-based features: day of week, month, weekend indicators
-Route aggregations: average seat counts, trip frequency, fare statistics
-Bus characteristics: ratings, seat capacity, bus types
+Time-based Features:
 
-Machine Learning Approach:
+Day of week
 
-Algorithm: LightGBM (Light Gradient Boosting Machine)
-Handles missing values and categorical variables effectively
-Provides feature importance rankings for interpretability
+Month
 
-Model Performance:
+Weekend/holiday indicators
 
-Validation RMSE: ~479.5 (Root Mean Square Error)
-Uses train-validation split for model evaluation
+Route-level Aggregations:
 
-Business Applications
-This analysis can help RedBus with:
+Average final seat counts
 
-Dynamic Pricing: Adjust prices based on predicted demand
-Route Planning: Optimize bus schedules for high-demand routes
-Inventory Management: Better allocation of bus capacity
-Revenue Optimization: Maximize seat utilization across different routes
+Route popularity metrics
 
-Technical Implementation
+Historical fare statistics
 
-Built using Python with pandas, scikit-learn, and LightGBM
-Jupyter notebook environment for iterative development
-Automated feature engineering and model training pipeline
-Generates CSV submission file for predictions
+Bus Characteristics:
 
-This type of demand forecasting is crucial for transportation companies to optimize operations and improve customer experience while maximizing revenue.
+Bus type encoding (AC, Non-AC, Sleeper, etc.)
+
+Operator ratings
+
+Seat capacity
+
+🤖 Machine Learning Approach
+🔍 Model Used: LightGBM (Light Gradient Boosting Machine)
+Handles large datasets efficiently
+
+Supports categorical variables natively
+
+Provides feature importance for interpretability
+
+Robust to missing values
+
+📈 Validation Strategy
+Train-validation split based on journey date
+
+Evaluation Metric: Root Mean Square Error (RMSE)
+
+Achieved RMSE: ~479.5 on validation data
+
+🧠 Business Use Cases
+Predictions from this model can support:
+
+📊 Dynamic Pricing — Adjust ticket prices based on forecasted demand
+
+🧭 Route Planning — Allocate more buses to high-demand routes
+
+🪑 Inventory Management — Optimize seat allocation and avoid under/overbooking
+
+💰 Revenue Optimization — Maximize seat utilization and profitability
+
+💻 Tech Stack
+Language: Python
+
+Libraries:
+
+pandas, numpy – data processing
+
+scikit-learn – preprocessing & evaluation
+
+lightgbm – model training
+
+matplotlib, seaborn – data visualization
+
+Environment: Jupyter Notebook
+
+Output: CSV file for submission (submission.csv)
+
+🚀 How to Run
+Clone the repository:
+
+bash
+Copy
+Edit
+git clone https://github.com/<your-username>/redbus-seat-prediction.git
+cd redbus-seat-prediction
+Install dependencies:
+
+bash
+Copy
+Edit
+pip install -r requirements.txt
+Run the notebook:
+
+bash
+Copy
+Edit
+jupyter notebook notebooks/RedBus_Prediction.ipynb
+Output will be saved as submission.csv
+
+📊 Sample Output
+ID	Predicted Final Seat Count
+1001	38
+1002	52
+...	...
+
+📎 Repository Structure
+bash
+Copy
+Edit
+📁 redbus-seat-prediction/
+│
+├── 📁 data/                  # Raw datasets (not included in repo)
+├── 📁 notebooks/
+│   └── RedBus_Prediction.ipynb
+├── 📁 models/                # Saved model files
+├── 📁 utils/                 # Feature engineering, preprocessing scripts
+├── submission.csv           # Final prediction file
+├── requirements.txt
+└── README.md
+📬 Contact
+For questions or collaborations, feel free to connect:
+
+Author: Kamidi Haswath
+
+Email: kamidihaswath@example.com
+
+LinkedIn: linkedin.com/in/haswath
+
+⭐ Acknowledgements
+Thanks to the RedBus Data Decode Hackathon team for providing the dataset and challenge!
